@@ -280,3 +280,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "ArrowLeft") openLightbox(index - 1);
     });
 });
+
+// ==========================================
+// 4. LQIP PLACEHOLDER SWAP
+// ==========================================
+// Clears each low-res background placeholder once its real (full-size)
+// image has finished loading, so the blurry placeholder doesn't stay
+// visible forever behind transparent parts of the final artwork.
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("img.lqip").forEach((img) => {
+        function clearPlaceholder() {
+            img.style.backgroundImage = "none";
+        }
+        if (img.complete && img.naturalWidth > 0) {
+            clearPlaceholder();
+        } else {
+            img.addEventListener("load", clearPlaceholder, { once: true });
+        }
+    });
+});
