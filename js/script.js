@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("img.lqip").forEach((img) => {
         function clearPlaceholder() {
-            img.style.backgroundImage = "none";
+            img.classList.add("loaded");
         }
         if (img.complete && img.naturalWidth > 0) {
             clearPlaceholder();
