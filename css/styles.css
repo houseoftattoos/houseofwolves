@@ -637,6 +637,7 @@ inset:0;
         transform:none;
         z-index:1;
         pointer-events:none;
+        background-image:url('images/raijin-back-japanese-irezumi-jesse-dee-geelong-house-of-wolves911-load.webp');
         background-size:cover;
         background-position:center;
         background-repeat:no-repeat;
@@ -654,6 +655,7 @@ inset:0;
         transform:none;
         z-index:1;
         pointer-events:none;
+        background-image:url('images/delorean-back-future-illustrative-scott-russell-geelong-house-of-wolves-load.webp');
         background-size:cover;
         background-position:center;
         background-repeat:no-repeat;
@@ -972,9 +974,19 @@ width: 380px;
 }
 
 .japanese-banner-photo {
+    background-image:url('images/raijin-banner-japanese-irezumi-jesse-dee-geelong-house-of-wolves-load.webp');
 }
 
 .fineline-banner-photo {
+    background-image:url('images/delorean-banner-back-future-illustrative-scott-russell-geelong-house-of-wolves-load.webp');
+}
+
+/* Once script.js confirms the real full-size image has loaded, it adds
+   .loaded to the element. This rule then removes the LQIP background —
+   done via a class toggle (not an inline style) so it works under a
+   strict style-src CSP with no 'unsafe-inline'. */
+.lqip.loaded {
+    background-image:none;
 }
 
 .style-banner .mobile-banner-copy {
