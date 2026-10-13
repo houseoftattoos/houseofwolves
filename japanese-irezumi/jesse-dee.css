@@ -730,7 +730,17 @@
   text-align:left;
   cursor:pointer;
 }
-.gaku-lede .gaku-role.hanashi-open:hover{
+.gaku-lede .gaku-role-secondary.hanashi-open{
+  display:block;
+  width:fit-content;
+  padding:0;
+  border:0;
+  background:none;
+  text-align:left;
+  cursor:pointer;
+}
+.gaku-lede .gaku-role.hanashi-open:hover,
+.gaku-lede .gaku-role-secondary.hanashi-open:hover{
   text-decoration:underline;
   text-underline-offset:4px;
 }

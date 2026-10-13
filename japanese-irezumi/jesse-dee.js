@@ -936,42 +936,56 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================================================
-   JAPANESE IREZUMI WRITTEN PIECE (hanashi-* component)
-   Opens from the role line under the name and the Izzy icon.
+   WRITTEN PIECES (hanashi-* component)
+   Japanese Irezumi + Neo-Traditional. Any .hanashi-open element opens the
+   overlay named in its aria-controls; an optional data-section is the id of
+   the heading inside it to scroll to.
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const panel = document.getElementById("jesse-irezumi");
-  if (!panel) return;
-
   const triggers = document.querySelectorAll(".hanashi-open");
-  const closeBtn = panel.querySelector(".hanashi-close");
-  const modal = panel.querySelector(".hanashi-modal");
+  if (!triggers.length) return;
+
+  let activePanel = null;
   let lastTrigger = null;
 
   function openPanel(trigger) {
+    const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+    if (!panel) return;
+    const modal = panel.querySelector(".hanashi-modal");
+    activePanel = panel;
     lastTrigger = trigger;
     panel.classList.add("hanashi-visible");
     panel.setAttribute("aria-hidden", "false");
     document.body.classList.add("hanashi-locked");
-    modal.scrollTop = 0;
-    closeBtn.focus();
+
+    const section = trigger.dataset.section
+      ? panel.querySelector("#" + trigger.dataset.section)
+      : null;
+    modal.scrollTop = section ? Math.max(section.offsetTop - 24, 0) : 0;
+    panel.querySelector(".hanashi-close").focus({ preventScroll: true });
   }
 
   function closePanel() {
-    panel.classList.remove("hanashi-visible");
-    panel.setAttribute("aria-hidden", "true");
+    if (!activePanel) return;
+    activePanel.classList.remove("hanashi-visible");
+    activePanel.setAttribute("aria-hidden", "true");
     document.body.classList.remove("hanashi-locked");
+    activePanel = null;
     if (lastTrigger) lastTrigger.focus();
   }
 
   triggers.forEach((t) => t.addEventListener("click", () => openPanel(t)));
-  closeBtn.addEventListener("click", closePanel);
-  panel.addEventListener("click", (e) => {
-    if (e.target === panel) closePanel();
+
+  document.querySelectorAll(".hanashi-overlay").forEach((panel) => {
+    panel.querySelector(".hanashi-close").addEventListener("click", closePanel);
+    panel.addEventListener("click", (e) => {
+      if (e.target === panel) closePanel();
+    });
   });
+
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && panel.classList.contains("hanashi-visible")) closePanel();
+    if (e.key === "Escape" && activePanel) closePanel();
   });
 });
