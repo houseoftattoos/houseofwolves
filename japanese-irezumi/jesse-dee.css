@@ -259,12 +259,12 @@
     grid-template-columns:290px 1fr 220px;
     gap:4px;
     align-items:start;
-    background: url('images/eaglebg.png') no-repeat;
+    background: url('images/eaglebg.avif') no-repeat;
     background-position:right 28% top;
     background-size:30%;
   }
   .gaku-portrait{
-    background:url('images/potty3.png') center/cover no-repeat;
+    background:url('images/potty3.avif') center/cover no-repeat;
     border-radius:2px;overflow:hidden;position:relative;
   }
   .gaku-portrait::after{
@@ -379,7 +379,7 @@
   .yurai-text{position:relative;z-index:2;}
   .yurai-text p{margin-bottom:var(--space-1);}
   .yurai-portrait{
-    background:url('images/legedit.png') right center/cover no-repeat;
+    background:url('images/legedit.avif') right center/cover no-repeat;
     position:absolute;
     right:40px;
     top:0;
@@ -1151,7 +1151,7 @@ body.moshikomi-locked {
     top:0;
     height:100%;
     width:45%;
-    background:url('images/jesseside.png') center/cover no-repeat;
+    background:url('images/jesseside.avif') center/cover no-repeat;
     opacity:.28;
     mask-image:linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
     pointer-events:none;
