@@ -264,7 +264,7 @@
     background-size:30%;
   }
   .gaku-portrait{
-    background:url('../images/jesse-dee-profile.avif') center/cover no-repeat;
+    background:url('images/jesse-dee-profile.avif') center/cover no-repeat;
     border-radius:2px;overflow:hidden;position:relative;
   }
   .gaku-portrait::after{
