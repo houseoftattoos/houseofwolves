@@ -934,3 +934,44 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "ArrowLeft") openLightbox(index - 1);
   });
 });
+
+/* =========================================================
+   JAPANESE IREZUMI WRITTEN PIECE (hanashi-* component)
+   Opens from the role line under the name and the Izzy icon.
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const panel = document.getElementById("jesse-irezumi");
+  if (!panel) return;
+
+  const triggers = document.querySelectorAll(".hanashi-open");
+  const closeBtn = panel.querySelector(".hanashi-close");
+  const modal = panel.querySelector(".hanashi-modal");
+  let lastTrigger = null;
+
+  function openPanel(trigger) {
+    lastTrigger = trigger;
+    panel.classList.add("hanashi-visible");
+    panel.setAttribute("aria-hidden", "false");
+    document.body.classList.add("hanashi-locked");
+    modal.scrollTop = 0;
+    closeBtn.focus();
+  }
+
+  function closePanel() {
+    panel.classList.remove("hanashi-visible");
+    panel.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("hanashi-locked");
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  triggers.forEach((t) => t.addEventListener("click", () => openPanel(t)));
+  closeBtn.addEventListener("click", closePanel);
+  panel.addEventListener("click", (e) => {
+    if (e.target === panel) closePanel();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && panel.classList.contains("hanashi-visible")) closePanel();
+  });
+});

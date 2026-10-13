@@ -717,6 +717,115 @@
   }
 
 /* =========================================================
+   JAPANESE IREZUMI WRITTEN PIECE (hanashi-*)
+   Same overlay/modal treatment as the booking enquiry, wider for reading.
+   ========================================================= */
+
+.gaku-lede .gaku-role.hanashi-open{
+  display:block;
+  width:fit-content;
+  padding:0;
+  border:0;
+  background:none;
+  text-align:left;
+  cursor:pointer;
+}
+.gaku-lede .gaku-role.hanashi-open:hover{
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.hanashi-icon{
+  display:block;
+  width:100%;
+  padding:0;
+  border:0;
+  background:none;
+  cursor:pointer;
+}
+.hanashi-icon img{display:block;margin:0 auto;}
+
+.hanashi-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:60px 24px 24px;
+  background:rgba(0,0,0,0.82);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.25s ease, visibility 0.25s ease;
+}
+.hanashi-overlay.hanashi-visible{opacity:1;visibility:visible;}
+
+.hanashi-modal{
+  position:relative;
+  width:min(720px,100%);
+  max-height:90vh;
+  overflow-y:auto;
+  padding:42px;
+  background:#0B0A09;
+  border:1px solid #B08A4A;
+  box-shadow:0 20px 70px rgba(0,0,0,0.65);
+  color:#ece8e2;
+}
+.hanashi-close{
+  position:absolute;
+  top:13px;
+  right:17px;
+  width:34px;
+  height:34px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#B08A4A;
+  font-size:30px;
+  font-weight:300;
+  line-height:1;
+  cursor:pointer;
+}
+.hanashi-header{margin-bottom:24px;}
+.hanashi-header h2{
+  margin:8px 0 12px;
+  font-family:Merriweather, sans-serif;
+  font-size:35px;
+  font-weight:500;
+  letter-spacing:0.08em;
+}
+.hanashi-body h3{
+  margin:28px 0 8px;
+  font-family:var(--font-subs);
+  font-weight:var(--fw-display2);
+  font-size:var(--fs-section-label);
+  letter-spacing:var(--ls-section-label);
+  text-transform:uppercase;
+  color:var(--c-gold);
+}
+.hanashi-body p{
+  margin:0 0 14px;
+  max-width:62ch;
+  color:#A1A1A1;
+  font-family:Montserrat, sans-serif;
+  font-size:14px;
+  line-height:1.8;
+}
+.hanashi-body .hanashi-sign{
+  margin-top:28px;
+  color:#ece8e2;
+  font-family:Merriweather, serif;
+  font-size:15px;
+  letter-spacing:0.04em;
+}
+body.hanashi-locked{overflow:hidden;}
+
+@media (max-width:1640px){
+  .hanashi-overlay{padding:22px;}
+  .hanashi-modal{max-height:94vh;padding:32px 20px 28px;}
+  .hanashi-header h2{font-size:21px;}
+}
+
+/* =========================================================
    BOOKING ENQUIRY (moshikomi-*)
    ========================================================= */
 
