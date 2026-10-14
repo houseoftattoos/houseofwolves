@@ -1,0 +1,838 @@
+/* ==========================================================
+   CONTACT PAGE STYLES (contactus.css)
+   Page-specific stylesheet. No inline styles are used on this page,
+   so it can sit under a strict Content-Security-Policy.
+   Header + footer are taken from faq.css so they match the site.
+   Fonts are the same self-hosted woff2 files used on the other pages.
+========================================================== */
+
+/* ---------- FONTS (same files as index / faq) ---------- */
+@font-face {
+    font-display: swap;
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 300;
+    src: url("fonts/merriweather-v33-latin-300.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 500;
+    src: url("fonts/merriweather-v33-latin-500.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 600;
+    src: url("fonts/merriweather-v33-latin-600.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/montserrat-v31-latin-regular.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    src: url("fonts/montserrat-v31-latin-500.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    src: url("fonts/montserrat-v31-latin-600.woff2") format("woff2");
+}
+
+/* ---------- TOKENS ---------- */
+:root {
+    --bg: #0b0a09;
+
+    /* Backgrounds */
+    --bg-primary: #0B0A09;
+    --bg-secondary: #151311;
+
+    /* Typography (aligned with index / faq) */
+    --text-primary: #D8D4CC;
+    --text-secondary: #a1a1a1;
+    --text-soft: #D2CCC1;
+
+    /* Bronze / gold */
+    --gold: #B08A4A;
+    --bronze: #8B6A38;
+    --bronze-light: #d0a85d;
+    --bronze-dark: #5D4524;
+
+    /* Borders */
+    --border: #8b6a38a6;
+    --border-hover: #A67A3E;
+
+    /* Header / footer tokens (from faq.css) */
+    --header-bg: var(--bg);
+    --header-mark-h: 40px;
+    --line: #3f3017;
+    --c-nav: #a1a1a1;
+    --c-gold: #B08A4A;
+    --font-subs: "Montserrat", sans-serif;
+    --wrap-pad: 12px;
+}
+
+@media (max-width: 1100px) {
+    :root { --wrap-pad: 20px; }
+}
+
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-family: "Montserrat", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================
+   SITE HEADER (sticky, same as faq page)
+========================================================== */
+.hikae-header,
+.hikae-header *,
+footer,
+footer * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hikae-header img { display: block; }
+.hikae-header a,
+footer a { color: inherit; text-decoration: none; }
+
+.hikae-wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+.kumi-link {
+    font-family: var(--font-subs);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--c-nav);
+}
+.kumi-link:hover { color: var(--c-gold); }
+
+.hikae-header {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: var(--header-bg);
+    padding: 14px 0;
+}
+.hikae-header .header-inner::after {
+    content: "";
+    position: absolute;
+    left: var(--wrap-pad);
+    right: var(--wrap-pad);
+    bottom: -14px;
+    height: 1px;
+    background: var(--line);
+    pointer-events: none;
+}
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.horishi-mark { display: flex; align-items: center; }
+.header-wordmark {
+    height: var(--header-mark-h);
+    width: auto;
+    display: block;
+}
+#site-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+#site-nav a.active { color: var(--c-gold); }
+.header-burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.header-burger-mark { height: var(--header-mark-h); width: auto; display: block; }
+
+@media (max-width: 1100px) {
+    .hikae-wrap { padding-left: 20px; padding-right: 20px; }
+}
+
+@media (max-width: 920px) {
+    .header-burger { display: flex; }
+    #site-nav {
+        display: none;
+        position: absolute;
+        top: calc(100% + 24px);
+        right: 20px;
+        z-index: 2;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: var(--header-bg);
+        border: 1px solid var(--line);
+        padding: 4px 18px 10px;
+    }
+    #site-nav.nav-open { display: flex; }
+    #site-nav a { padding: 10px 0; width: 100%; }
+}
+
+/* ==========================================================
+   SITE FOOTER (same as faq page)
+========================================================== */
+footer { border-top: 0px solid var(--line); padding: 30px 0 25px; }
+footer .hikae-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.ashimoto-label {
+    font-family: var(--font-subs);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: .1em;
+    color: var(--c-nav);
+    text-transform: uppercase;
+    font-style: normal;
+}
+.ashimoto-left { text-align: left; }
+.ashimoto-right { text-align: right; }
+
+/* ==========================================================
+   PAGE CONTAINER
+========================================================== */
+.page-container {
+    width: 844px;
+    margin-inline: auto;
+}
+
+.spacer-16 { height: 16px; }
+
+/* ==========================================================
+   ARTISTS GRID
+========================================================== */
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 272px);
+    gap: 14px;
+}
+
+/* ==========================================================
+   ARTIST CARD
+========================================================== */
+.artist-card {
+    display: flex;
+    width: 272px;
+    min-height: 203px;
+    border: 1px solid var(--border);
+    transition: color 0.5s ease;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.artist-card:hover {
+    border-color: var(--border-hover);
+    transition: border-color 0.5s ease;
+}
+
+/* PORTRAIT */
+.artist-image {
+    flex: 0 0 128px;
+    width: 128px;
+    height: 201px;
+}
+
+.artist-image img {
+    display: block;
+    width: 128px;
+    height: 201px;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Lacey's portrait: black and white, 20% darker */
+.artist-image img.portrait-bw {
+    filter: grayscale(100%) brightness(0.7);
+}
+
+/* CONTENT COLUMN */
+.artist-content {
+    display: flex;
+    flex-direction: column;
+    width: 126px;
+    margin-left: 14px;
+    padding-top: 16px;
+    padding-bottom: 18px;
+    box-sizing: border-box;
+}
+
+/* NAME */
+.artist-name {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+.artist-name span { display: block; }
+
+.artist-name2 {
+    display: flex;
+    flex-direction: column;
+    margin: -3px 0 -4px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+}
+.artist-name2 span { display: block; }
+
+/* DIVIDER */
+.artist-divider {
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    margin: 16px 0 0;
+    flex-shrink: 0;
+}
+
+/* SPECIALTIES */
+.artist-styles {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--gold);
+}
+.artist-styles li { margin: 0; }
+.artist-styles li + li { margin-top: 12px; }
+
+.artist-styles2 {
+    padding: 0;
+    margin: 14px 0 12px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--text-secondary);
+}
+
+/* INSTAGRAM */
+.artist-instagram {
+    margin-top: 14px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--text-secondary);
+    transition: color 0.5s ease;
+}
+.artist-instagram:hover { color: var(--bronze-light); }
+
+/* LINKS (EMAIL + VIEW GALLERY) */
+.artist-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: color 0.5s ease;
+}
+.artist-link:hover { color: var(--bronze-light); }
+
+.artist-email {
+    display: flex;
+    width: fit-content;
+    margin-bottom: 8px;
+}
+
+.arrow { font-size: 10px; line-height: 1; }
+
+/* ==========================================================
+   HOURS
+========================================================== */
+.hours-row {
+    display: grid;
+    grid-template-columns: 286px 128px;
+    column-gap: 0px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--text-secondary);
+    overflow: visible;
+}
+.hours-status {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: 0.20em;
+    overflow: visible;
+}
+
+.hours-box {
+    position: relative;
+    overflow: visible;
+}
+.hours-box::before {
+    content: "";
+    position: absolute;
+    width: 415px;
+    height: 415px;
+    background: url("images/shark-background-scott-russell-geelong-house-of-wolves.avif") no-repeat center;
+    background-size: contain;
+    top: -96px;
+    right: 0px;
+    opacity: .05;
+    pointer-events: none;
+    z-index: 0;
+}
+.hours-box > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================
+   MAP
+========================================================== */
+.contact-map {
+    display: grid;
+    grid-template-columns: 415px 415px;
+    gap: 14px;
+}
+
+/* ==========================================================
+   CONTACT TOP LAYOUT
+========================================================== */
+.contact-top {
+    display: grid;
+    grid-template-columns: 380px 464px;
+    position: relative;
+}
+
+.contact-content {
+    width: 351px;
+    position: relative;
+    padding-top: 48px; /* same gap under the header line as the FAQ intro */
+}
+
+@media (max-width: 920px) {
+    .contact-content { padding-top: 24px; }
+    .contact-logo { top: 24px; }
+}
+
+.contact-booking { margin-top: 16px; }
+
+/* ENQUIRY BOX */
+.enquiry-box {
+    position: relative;
+    width: 349px;
+    height: 154px;
+    border: 1px solid var(--border);
+    box-sizing: content-box;
+    margin-top: 43px;
+    margin-bottom: 18px;
+}
+
+.enquiry-demon {
+    position: absolute;
+    left: -13px;
+    bottom: -8px;
+    width: auto;
+    height: auto;
+    pointer-events: none;
+}
+
+/* RIGHT IMAGE COMPOSITION */
+.contact-image {
+    position: relative;
+    flex: 1;
+    min-height: 620px;
+    overflow: visible;
+}
+.contact-photo {
+    position: absolute;
+    top: -35px;
+    right: -20px;
+    height: auto;
+    max-width: none;
+}
+.contact-logo {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    width: auto;
+    height: auto;
+    z-index: 2;
+}
+
+/* DIVIDER */
+.contact-divider {
+    position: relative;
+    width: 100%;
+    margin-top: 0px;
+    text-align: center;
+}
+.contact-divider img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ==========================================================
+   CONTACT TYPOGRAPHY
+========================================================== */
+.contact-label {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.contact-title {
+    margin: 12px 0 16px 0;
+    font-family: "Merriweather", serif;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.01;
+    letter-spacing: .018em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+.contact-booking h2 {
+    margin: 0 0 16px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+/* same type as the FAQ intro text (.honbun-text) */
+.contact-booking p {
+    margin: 0;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: var(--text-secondary);
+}
+.contact-booking p + p { margin-top: 12px; }
+
+.enquiry-content h3 {
+    margin: 16px 0 10px 140px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.enquiry-list {
+    margin: 0 0 0 140px;
+    padding: 0;
+    list-style: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+.enquiry-list li { margin: 0; }
+.enquiry-list li + li { margin-top: 8px; }
+
+/* ==========================================================
+   TABLET: 3 ACROSS (portrait + text column shrink together)
+========================================================== */
+@media (max-width: 900px) {
+
+    .page-container {
+        width: 100%;
+        max-width: 844px;
+        margin-inline: auto;
+        padding-inline: 38px;
+        box-sizing: border-box;
+    }
+
+    .artists-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .artist-card {
+        width: auto;
+        min-width: 0;
+    }
+
+    .artist-image {
+        flex: 0 0 40%;
+        width: 40%;
+        height: auto;
+        align-self: stretch;
+    }
+    .artist-image img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .artist-content {
+        width: auto;
+        flex: 1;
+        min-width: 0;
+        margin-left: 10px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .artist-name { font-size: 14px; }
+    .artist-divider { margin-top: 12px; }
+    .artist-styles,
+    .artist-styles2 {
+        margin-top: 12px;
+        font-size: 10px;
+        line-height: 1.3;
+    }
+    .artist-styles li + li { margin-top: 8px; }
+    .artist-instagram {
+        margin-top: 12px;
+        margin-bottom: 10px;
+        font-size: 10px;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+    .artist-link {
+        font-size: 9px;
+        letter-spacing: 0.16em;
+    }
+    .artist-email { margin-bottom: 8px; }
+    .arrow { font-size: 9px; }
+}
+
+@media (max-width: 600px) {
+    .page-container { padding-inline: 20px; }
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+@media (max-width: 760px) {
+
+    /* ---- CONTACT TOP ---- */
+    .contact-top {
+        display: block;
+        grid-template-columns: none;
+    }
+
+    .contact-content { width: 100%; }
+
+    /* Right-hand hero image composition doesn't translate to
+       mobile widths, so it's dropped rather than squeezed */
+    .contact-image { display: none; }
+
+    .contact-title { font-size: 32px; }
+
+    .enquiry-box {
+        width: 100%;
+        height: auto;
+        min-height: 154px;
+        padding-bottom: 24px;
+        margin-top: 32px;
+        box-sizing: border-box;
+    }
+
+    /* text block sits in the space to the right of the demon, so it
+       reads as centred in the box rather than hugging the image */
+    .enquiry-content h3 {
+        margin-left: 40%;
+        margin-right: 16px;
+    }
+    .enquiry-list {
+        margin-left: 40%;
+        margin-right: 16px;
+    }
+
+    /* divider image after the enquiry box is hidden on mobile */
+    .contact-divider { display: none; }
+
+    /* ---- ARTIST CARDS: one per row ---- */
+    .artists-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 14px;
+    }
+
+    .artist-card {
+        width: 100%;
+        max-width: 400px;
+        min-height: 220px;
+    }
+
+    .artist-image {
+        flex: 0 0 130px;
+        width: 130px;
+        height: auto;
+        align-self: stretch;
+    }
+    .artist-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .artist-content {
+        width: auto;
+        flex: 1;
+        min-width: 0;
+        margin-left: 14px;
+        padding-top: 16px;
+        padding-bottom: 14px;
+        padding-right: 10px;
+    }
+
+    /* names on one line (wraps only if the card is too narrow) */
+    .artist-name {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: .3em;
+        row-gap: 4px;
+        font-size: clamp(14px, 4.8vw, 19px);
+        line-height: 1.15;
+    }
+
+    .artist-divider { margin-top: 14px; }
+
+    /* index-page style: primary = gold, secondary = white type colour */
+    .artist-styles {
+        margin-top: 14px;
+        font-size: 12px;
+        line-height: 1.3;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--gold);
+    }
+    .artist-styles li { padding: 0; }
+    .artist-styles li + li {
+        margin-top: 8px;
+        font-weight: 500;
+        letter-spacing: .06em;
+        color: var(--text-primary);
+    }
+
+    .artist-instagram {
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-size: 13px;
+        letter-spacing: 0;
+    }
+
+    /* tap targets: instagram + email + gallery each get a 36px row */
+    a.artist-instagram {
+        display: flex;
+        align-items: center;
+        min-height: 36px;
+        margin: 0;
+        overflow-wrap: anywhere;
+    }
+    p.artist-instagram { margin-top: 6px; }
+
+    .artist-link {
+        font-size: 11px;
+        min-height: 36px;
+    }
+    .artist-email { margin-bottom: 0; }
+
+    /* ---- MAP + HOURS ---- */
+    .contact-map {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .map-box a,
+    .map-box img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* shark: same top position, centred horizontally, enlarged to
+       fill the hours box down to the bottom */
+    .hours-box::before {
+        width: auto;
+        height: auto;
+        top: -30px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-position: center top;
+        background-size: contain;
+        opacity: .07;
+    }
+
+    .hours-row {
+        grid-template-columns: 1fr auto;
+        column-gap: 12px;
+    }
+}
