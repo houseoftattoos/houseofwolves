@@ -371,7 +371,7 @@
   .yurai-text{position:relative;z-index:2;}
   .yurai-text p{margin-bottom:var(--space-1);}
   .yurai-portrait{
-    background:url('images/shanleg.avif') right center/cover no-repeat;
+    background:url('images/shanleg.avif') right 80%/cover no-repeat; /* 80% down so his head sits in the visible window */
     position:absolute;
     right:40px;
     top:0;
