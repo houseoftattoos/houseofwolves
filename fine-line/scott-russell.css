@@ -1369,10 +1369,10 @@ body.moshikomi-locked {
 .seimitsu-fig{margin:0;height:160px;overflow:hidden;cursor:pointer;min-width:0;}
 .seimitsu-fig img{
   display:block;width:100%;height:100%;object-fit:cover;
-  filter:grayscale(25%) brightness(90%);
+  filter:sepia(45%) brightness(72%) contrast(105%);
   transition:filter .3s cubic-bezier(0.25,1,0.5,1);
 }
-.seimitsu-fig img:hover{filter:grayscale(0%) brightness(100%);}
+.seimitsu-fig img:hover{filter:sepia(20%) brightness(90%);}
 
 @media (max-width:720px){
   /* heading in the same off-white the other headings use, no rule under it */
