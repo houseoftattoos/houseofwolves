@@ -1,0 +1,1297 @@
+  /* Self-hosted woff2s (same files/weights as the index page — Inter is gone
+     for good, so only Merriweather (display) and Montserrat (everything else)
+     get loaded). */
+  @font-face {
+    font-display: swap;
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 300;
+    src: url("../fonts/merriweather-v33-latin-300.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/merriweather-v33-latin-500.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 600;
+    src: url("../fonts/merriweather-v33-latin-600.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/montserrat-v31-latin-regular.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/montserrat-v31-latin-500.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    src: url("../fonts/montserrat-v31-latin-600.woff2") format("woff2");
+  }
+
+  :root{
+    /* ---- color ---- */
+    --bg:#0b0a09;
+    /* Just a touch darker than the page background — enough to separate the
+       sticky header from content scrolling under it, subtle enough not to
+       read as a different colour. */
+    --header-bg:var(--bg);
+    /* Shared height for both header marks (wordmark + burger monogram) — see
+       .header-wordmark / .header-burger-mark. 40px keeps the monogram at
+       the ~30px-wide size it was already sized to (its native ratio is
+       192:260), so this isn't a visual change to it, just a named value the
+       wordmark now matches instead of guessing its own number. */
+    --header-mark-h:40px;
+    --line: #3f3017;
+    --c-heading:#D8D4CC;
+    --c-gold:#B08A4A;
+    --c-nav:#a1a1a1;
+    --c-body:#a1a1a1;
+    --c-small-info:#a1a1a1;
+    --c-role-secondary:#B8B8B8;
+    --c-button-text:#B08A4A;
+    --c-button-border:#3f3017;
+    --c-button-hover-bg:rgba(176,138,74,.08);
+    --c-button-hover-border:#856638;
+    --c-button-hover-text:#d6cec0;
+
+    --artist-bg:#0b0a09;
+    --artist-panel:#0d0c0b;
+    --artist-border:#6b4b1d;
+    --artist-gold:#b68842;
+    --artist-gold-light:#d0a85d;
+    --artist-white:#ece8e2;
+    --artist-grey:#9d9992;
+
+    /* ---- font families (TWO only) ---- */
+    --font-display: "Merriweather", Georgia, serif;
+    --font-sans: "Montserrat", Helvetica, Arial, sans-serif;
+    --font-subs: "Montserrat" , sans-serif;
+
+    /* ---- weights ---- */
+    --fw-display:500;
+    --fw-display2:600;
+    --fw-display3:600;
+    --fw-sans-light:400;
+    --fw-sans-regular:400;
+    --fw-sans-medium:500;
+    --fw-sans-heavy:600;
+
+    /* ---- font sizes (max 7 across the site) ---- */
+    --fs-artist-name:42px;
+    --fs-subtitle:14px;
+    --fs-body:14px;
+    --fs-small-info:14px;
+    --fs-section-label:14px;
+    --fs-nav:12px;
+    --fs-wordmark:18px;
+
+    /* ---- line-height ---- */
+    --lh-artist-name:1;
+    --lh-body:1.4;
+    --lh-small-info:1.4;
+    --lh-section-label:1;
+    --lh-wordmark:1;
+
+    /* ---- letter-spacing ---- */
+    --ls-artist-name:.018em;
+    --ls-subtitle:.14em;
+    --ls-body:.0em;
+    --ls-small-info:.02em;
+    --ls-section-label:.14em;
+    --ls-nav:.1em;
+    --ls-button:.10em;
+    --ls-link:.1em;
+    --ls-link-hover:.1em;
+    --ls-wordmark:.06em;
+
+    /* ---- spacing rules (Heading → Subtitle → Paragraph → Paragraph → Button) ---- */
+    --space-1:12px;
+    --space-2:24px;
+    --space-3:36px;
+    --space-4:48px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth; scrollbar-gutter: stable;}
+
+  body{
+    background:var(--bg);
+    color:var(--c-body);
+    font-family:var(--font-sans);
+    font-weight:var(--fw-sans-light);
+    font-size:var(--fs-body);
+    line-height:var(--lh-body);
+    letter-spacing:var(--ls-body);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img, svg{display:block;}
+  a{color:inherit;text-decoration:none;}
+
+  :root{--wrap-pad:12px;}
+  @media (max-width:1100px){:root{--wrap-pad:20px;}}
+  .hikae-wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 12px;
+  }
+
+  /* ---------- shared type roles ---------- */
+  .midashi-label{
+    font-family:var(--font-subs);
+    font-weight:var(--fw-display2);
+    font-size:var(--fs-section-label);
+    letter-spacing:var(--ls-section-label);
+    line-height:var(--lh-section-label);
+    text-transform:uppercase;
+    color:var(--c-gold);
+  }
+  .suji-rule{
+    width:24px;height:1px;background:var(--c-gold);margin-top:12px;
+  }
+  .midashi-head{margin-bottom:12px;}
+
+  .kumi-link{
+    font-family:var(--font-subs);
+    font-weight:var(--fw-sans-medium);
+    font-size:var(--fs-nav);
+    letter-spacing:var(--ls-nav);
+    text-transform:uppercase;
+    color:var(--c-nav);
+  }
+  .kumi-link:hover{color:var(--c-gold);}
+
+  .koguchi-info{
+    font-family:var(--font-subs);
+    font-weight:var(--fw-sans-medium);
+    font-size:var(--fs-small-info);
+    letter-spacing:var(--ls-small-info);
+    line-height:var(--lh-small-info);
+    color:var(--c-small-info);
+  }
+
+  .honbun-text{
+    font-family:var(--font-sans);
+    font-weight:var(--fw-sans-light);
+    font-size:var(--fs-body);
+    line-height:var(--lh-body);
+    letter-spacing:var(--ls-body);
+    color:var(--c-body);
+    max-width:68ch;
+  }
+
+  /* ---------- HEADER (sticky — stays pinned while the page scrolls) ---------- */
+  .hikae-header{
+    position:sticky;
+    top:0;
+    z-index:500;
+    background:var(--header-bg);
+    /* Gold divider strip lives in the ::after below, not a border, so the
+       texture image can be shown at its own native size instead of being
+       stretched or squashed to fit. */
+    padding:14px 0;
+  }
+  /* Header divider: same 1px gold line as the section separators, inset to
+     the wrap's content edges (--wrap-pad matches .hikae-wrap padding). */
+  .hikae-header .header-inner::after{
+    content:"";
+    position:absolute;
+    left:var(--wrap-pad);
+    right:var(--wrap-pad);
+    bottom:-14px;
+    height:1px;
+    background:var(--line);
+    pointer-events:none;
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;position:relative;}
+  .horishi-mark{display:flex;align-items:center;}
+  /* Both marks share one height so they use the same vertical space in the
+     header — sizing the wordmark by its own height (not matching the
+     monogram's width, which is a different dimension) is what keeps the
+     header from growing when the wordmark gets bigger: it's already sized
+     to fit inside the room the monogram's height was already taking up. */
+  .header-wordmark{
+    height:var(--header-mark-h);
+    width:auto;
+    display:block;
+  }
+  nav{display:flex;align-items:center;gap:30px;}
+  nav a.active{color:var(--c-gold);border-bottom:0px solid var(--c-gold);padding-bottom:px;}
+  .header-burger{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    padding:0;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+  }
+  .tomoe-burger{width:18px;height:13px;}
+  .tomoe-burger line{stroke:var(--c-gold);stroke-width:1.4;}
+  /* Monogram version of the menu button. Its fine linework needs more room
+     than the old 3-line icon to stay legible, so it's sized up a bit rather
+     than squeezed into the same tiny box. Height-based (not width-based) so
+     it shares the same --header-mark-h slot as the wordmark. */
+  .header-burger-mark{height:var(--header-mark-h);width:auto;display:block;}
+
+  /* ---------- HERO ---------- */
+  .gaku-hero{
+    padding:0px 0 2px;
+    display:grid;
+    grid-template-columns:290px 1fr 220px;
+    gap:4px;
+    align-items:start;
+  }
+  .gaku-portrait{
+    background:url('images/lacey-profile-jesse-tone.avif') center/cover no-repeat;
+    border-radius:2px;overflow:hidden;position:relative;
+  }
+  .gaku-portrait::after{
+    content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(ellipse at 60% 70%, rgba(193,137,79,0.10), transparent 0%),
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0 2px, transparent 0%);
+  }
+
+  .gaku-lede h1{
+    font-family:var(--font-display);
+    font-weight:var(--fw-display3);
+    font-size:var(--fs-artist-name);
+    line-height:var(--lh-artist-name);
+    letter-spacing:var(--ls-artist-name);
+    text-transform:uppercase;
+    color:var(--c-heading);
+  }
+  /* Two-tier style label under the name, matching the index page's card
+     pattern: primary style in gold/bold, secondary style under it in a
+     lighter grey/weight — same colours and weights, kept at this page's
+     existing subtitle size since it sits under a much bigger hero name. */
+  .gaku-lede .gaku-role{
+    font-family:var(--font-subs);
+    font-weight:var(--fw-display3);
+    font-size:var(--fs-subtitle);
+    letter-spacing:var(--ls-subtitle);
+    text-transform:uppercase;
+    color:var(--c-gold);
+    margin-top:var(--space-1);
+  }
+  .gaku-lede .gaku-role-secondary{
+    font-family:var(--font-subs);
+    font-weight:var(--fw-sans-medium);
+    font-size:var(--fs-subtitle);
+    letter-spacing:.10em;
+    text-transform:uppercase;
+    color:var(--c-role-secondary);
+    margin-top:2px;
+  }
+  .gaku-lede .suji-rule{margin-top:12px;margin-bottom:0;}
+  .gaku-lede p{margin-top:var(--space-1);}
+  .gaku-lede p + p{margin-top:var(--space-1);}
+  .gaku-lede p:last-of-type{margin-bottom:0;}
+
+  .shokai-row{
+    display:flex;
+    flex-wrap:wrap;
+  }
+  .shokai-btn{
+    margin-top: 12px;
+    margin-right: 8px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:44px;
+    padding:0 12px 0px;
+    border:1px solid var(--c-button-border);
+    background:transparent;
+    border-radius:0;
+    font-family:var(--font-sans);
+    font-weight:var(--fw-sans-medium);
+    font-size:var(--fs-section-label);
+    letter-spacing:var(--ls-button);
+    text-transform:uppercase;
+    color:var(--c-button-text);
+    transition:.25s ease;
+  }
+  .shokai-btn:hover{
+    background:var(--c-button-hover-bg);
+    border-color:var(--c-button-hover-border);
+    color:var(--c-button-hover-text);
+  }
+
+  /* ---------- KNOWN FOR / EXPERIENCE / WAIT / SOCIALS ---------- */
+  .meibo-list{display:flex;flex-direction:column;gap:14px;}
+  .meibo-item{display:flex;gap:12px;align-items:flex-start;}
+  .meibo-icon{width:17px;height:17px;flex:0 0 17px;margin-top:1px;}
+  .meibo-icon svg{width:100%;height:100%;stroke:var(--c-gold);fill:none;stroke-width:1.3;}
+  .meibo-label{
+    font-family:var(--font-subs);font-weight:var(--fw-display3);
+    font-size:var(--fs-nav);letter-spacing:var(--ls-nav);text-transform:uppercase;
+    color:var(--c-gold);margin-bottom:1px;
+  }
+  .meibo-value{font-family:var(--font-subs);font-weight:var(--fw-displa2);
+    font-size:var(--fs-small-info);letter-spacing:var(--ls-small-info);line-height:var(--lh-small-info);
+    color:var(--c-body);}
+
+  /* ---------- DIVIDER (a plain rule line — same 12px spacing on both sides as .suji-rule) ---------- */
+  .kugiri-line{
+    display:block;
+    width:100%;
+    height:1px;
+    background:var(--line);
+    margin:12px 0;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .yurai-section{padding:14px 0 2px;}
+  .yurai-content{display:grid;grid-template-columns:1.15fr 1fr;gap:34px;align-items:stretch;position:relative;}
+  .yurai-text{position:relative;z-index:2;}
+  .yurai-text p{margin-bottom:var(--space-1);}
+  /* Desktop: the photo sits in the empty right-hand column, not under the text. Shown whole (740x1024), pre-darkened so it blends into the page. */
+  .yurai-portrait{
+    background:url('images/lacey-side.avif') left center/auto 100% no-repeat;
+    position:absolute;
+    right:0;
+    top:0;
+    height:100%;
+    aspect-ratio:740 / 1024;
+    mask-image:linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%);
+    }
+  .yurai-portrait::after{
+    content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(ellipse at 35% 60%, rgba(193,137,79,0.12), transparent 55%),
+      repeating-linear-gradient(70deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 8px);
+  }
+  /* mobile-only faded side portrait, shown instead of .yurai-portrait */
+  .yurai-portrait-mobile{display:none;}
+
+  /* ---------- SELECTED WORK ---------- */
+  .gafu-section{padding:14px 0 2px;}
+
+  /* ---------- Lacey's tattoo gallery: standard thumbnail grid ---------- */
+  .nagame-gallery,
+  .nagame-gallery *,
+  .nagame-gallery *::before,
+  .nagame-gallery *::after {
+    box-sizing: border-box;
+  }
+
+  /* 4 across on desktop. Flex-wrap + centred so a short last row sits in the middle. */
+  .nagame-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .nagame-item {
+    flex: 0 0 calc((100% - 3 * 14px) / 4);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .nagame-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%) brightness(85%);
+    transition: filter 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: filter;
+  }
+  .nagame-item img:hover {
+    filter: grayscale(0%) brightness(100%);
+  }
+
+  @media (max-width: 900px) {
+    .nagame-item { flex-basis: calc((100% - 2 * 14px) / 3); }
+  }
+  @media (max-width: 640px) {
+    .nagame-gallery { gap: 6px; }
+    .nagame-item { flex-basis: calc((100% - 6px) / 2); }
+  }
+
+  /* ---------- Lightbox ---------- */
+  #kansho-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.96);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  #kansho-lightbox.kansho-active {
+    display: block;
+    opacity: 1;
+  }
+  #kansho-viewer {
+    position: absolute;
+    inset: 0;
+    touch-action: none;
+    overflow: hidden;
+  }
+  #kansho-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    will-change: transform, opacity;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    opacity: 0;
+    transition: opacity 1.0s cubic-bezier(0.99, 1, 0.99, 1);
+  }
+  .kansho-ctrl {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 36px;
+    cursor: pointer;
+    z-index: 10000;
+    user-select: none;
+    transition: color 0.2s ease, background 0.2s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .kansho-ctrl:hover {
+    color: #d4af37;
+    background: rgba(0, 0, 0, 0.75);
+  }
+  /* Close stays near the top; prev/next moved down to the bottom edge
+     (instead of vertical-center) so they don't sit over the image itself —
+     same positions as the index page's lightbox. */
+  .kansho-close {
+    right: 10px;
+    top: 4.8%;
+    transform: translateY(-50%);
+    font-size: 42px;
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4px 12px;
+    border: 0px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
+    white-space: nowrap;
+  }
+  .kansho-next {
+    right: 10px;
+    top: 95.2%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
+    white-space: nowrap;
+  }
+  .kansho-prev {
+    left: 10px;
+    top: 95.2%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
+    white-space: nowrap;
+  }
+  .kansho-help {
+    position: absolute;
+    top: 2.8%;
+    right: -70px;
+    transform: translateX(-50%);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .kansho-help-mobile{display:none;}
+  .kansho-help-desktop{display:inline;}
+  @media (max-width:667px){
+    .kansho-help-mobile{display:inline;}
+    .kansho-help-desktop{display:none;}
+  }
+
+  /* Artist / style / subject caption — same dark, boxed look as the arrows
+     and help label, sitting on the same row as the prev/next arrows so it
+     reads as one control strip without covering the photo. */
+  .kansho-caption {
+    position: absolute;
+    left: 50%;
+    top: 95.2%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    max-width: min(70vw, 320px);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    text-align: center;
+    line-height: 1.6;
+    pointer-events: none;
+  }
+  #kansho-caption-top,
+  #kansho-caption-sub {
+    display: block;
+    font-family: var(--font-subs);
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #kansho-caption-top {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+  }
+  #kansho-caption-sub {
+    color: var(--c-gold);
+    margin-top: 2px;
+  }
+
+  /* ---------- CTA / CONTACT BOX ---------- */
+  .toiawase-box{padding:36px 0 24px;}
+  .toiawase-frame{border:1px solid var(--line);display:grid;grid-template-columns:1.4fr 1fr 0.7fr;position:relative;}
+  .toiawase-col{
+    padding:20px 24px;
+    border-right:1px solid var(--line);
+    min-width:0; display: flex;
+    flex-wrap: wrap;
+  }
+  .toiawase-col:last-child{border-right:none;}
+  .toiawase-col h2{
+    font-family:var(--font-display);
+    font-weight:var(--fw-display);
+    font-size:var(--fs-subtitle);
+    line-height:1.3;
+    letter-spacing:.01em;
+    color:var(--c-heading);
+    margin-bottom:12px;
+  }
+  /* No margin here — the suji-rule right under each heading already adds its
+     own 12px margin-top, same as every other heading+rule pair on the page.
+     Adding margin-bottom here too was stacking to 24px instead of 12px. */
+  .toiawase-col h3{margin-bottom:0;}
+  .toiawase-line{display:flex;align-items:center;gap:10px;margin-bottom:12px;cursor:pointer;transition:color .2s ease;}
+  a.toiawase-line:hover{color:var(--c-gold);}
+  .toiawase-line svg{width:15px;height:15px;stroke:var(--c-gold);fill:none;stroke-width:1.4;flex:0 0 15px;}
+  .horishi-seal-wrap{display:flex;align-items:center;justify-content:center;height:100%;}
+  .horishi-seal-wrap svg{width:0px;height:18px;}
+  .toiawase-col .midashi-label {
+    width: 100%;
+  }
+  /* Every direct child of a contact-box column gets its own full-width row —
+     .toiawase-col is a wrapping flex column, so anything narrower than 100%
+     (the short rule, an icon) would otherwise sit beside the next item on the
+     same line instead of stacking under it, at any viewport width. */
+  .toiawase-col .toiawase-line,
+  .toiawase-col .honbun-text {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+  }
+  .toiawase-col p.honbun-text{display:block;}
+  /* Moved off inline style="" attributes for CSP compliance. */
+  .toiawase-intro-text{font-size:var(--fs-small-info);line-height:var(--lh-small-info);margin-top:var(--space-1);}
+  .toiawase-touch-rule{margin-bottom:var(--space-1);}
+  .horishi-seal img{
+    width: 108px;
+    height: auto;
+  }
+  @media (min-width:951px){
+    .horishi-seal img{width:160px;}
+  }
+
+/* =========================================================
+   WRITTEN PIECE (hanashi-*)
+   Same overlay/modal treatment as the booking enquiry, wider for reading.
+   ========================================================= */
+
+.gaku-lede .gaku-role.hanashi-open{
+  display:block;
+  width:fit-content;
+  padding:0;
+  border:0;
+  background:none;
+  text-align:left;
+  cursor:pointer;
+}
+.gaku-lede .gaku-role-secondary.hanashi-open{
+  display:block;
+  width:fit-content;
+  padding:0;
+  border:0;
+  background:none;
+  text-align:left;
+  cursor:pointer;
+}
+.gaku-lede .gaku-role.hanashi-open:hover,
+.gaku-lede .gaku-role-secondary.hanashi-open:hover{
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+
+.hanashi-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:60px 24px 24px;
+  background:rgba(0,0,0,0.82);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.25s ease, visibility 0.25s ease;
+}
+.hanashi-overlay.hanashi-visible{opacity:1;visibility:visible;}
+
+.hanashi-modal{
+  position:relative;
+  width:min(720px,100%);
+  max-height:90vh;
+  overflow-y:auto;
+  padding:42px;
+  background:#0B0A09;
+  border:1px solid #B08A4A;
+  box-shadow:0 20px 70px rgba(0,0,0,0.65);
+  color:#ece8e2;
+}
+.hanashi-close{
+  position:absolute;
+  top:13px;
+  right:17px;
+  width:34px;
+  height:34px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#B08A4A;
+  font-size:30px;
+  font-weight:300;
+  line-height:1;
+  cursor:pointer;
+}
+.hanashi-header{margin-bottom:24px;}
+.hanashi-header h2{
+  margin:8px 0 12px;
+  font-family:Merriweather, sans-serif;
+  font-size:35px;
+  font-weight:500;
+  letter-spacing:0.08em;
+}
+.hanashi-body h3{
+  margin:28px 0 8px;
+  font-family:var(--font-subs);
+  font-weight:var(--fw-display2);
+  font-size:var(--fs-section-label);
+  letter-spacing:var(--ls-section-label);
+  text-transform:uppercase;
+  color:var(--c-gold);
+}
+.hanashi-body p{
+  margin:0 0 14px;
+  max-width:62ch;
+  color:#A1A1A1;
+  font-family:Montserrat, sans-serif;
+  font-size:14px;
+  line-height:1.8;
+}
+.hanashi-body .hanashi-sign{
+  margin-top:28px;
+  color:#ece8e2;
+  font-family:Merriweather, serif;
+  font-size:15px;
+  letter-spacing:0.04em;
+}
+body.hanashi-locked{overflow:hidden;}
+
+@media (max-width:1640px){
+  .hanashi-overlay{padding:22px;}
+  .hanashi-modal{max-height:94vh;padding:32px 20px 28px;}
+  .hanashi-header h2{font-size:21px;}
+}
+
+/* =========================================================
+   BOOKING ENQUIRY (moshikomi-*)
+   ========================================================= */
+
+.moshikomi-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 24px 24px;
+  background: rgba(0, 0, 0, 0.82);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.moshikomi-overlay.moshikomi-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.moshikomi-modal {
+  position: relative;
+  width: min(380px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 42px;
+  background: #0B0A09;
+  border: 1px solid #B08A4A;
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.65);
+  color: #ece8e2;
+}
+
+.moshikomi-close {
+  position: absolute;
+  top: 13px;
+  right: 17px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #B08A4A;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.moshikomi-header {
+  margin-bottom: 24px;
+}
+
+.moshikomi-header h2 {
+  margin: 8px 0 12px;
+  font-family: Merriweather, sans-serif;
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.moshikomi-header p {
+  max-width: 600px;
+  margin: 18px 0 0;
+  color: #A1A1A1;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.moshikomi-step {
+  display: none;
+}
+
+.moshikomi-step.active {
+  display: block;
+}
+
+.moshikomi-step-heading {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  gap: 12px;
+  margin-bottom: 25px;
+  color: #B08A4A;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.moshikomi-step-heading span {
+  color: #afafaf;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.moshikomi-field {
+  display: block;
+  margin-bottom: 20px;
+  color: #ece8e2;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+}
+
+.moshikomi-field > span,
+.moshikomi-field > label > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #d7d2cb;
+}
+
+.moshikomi-field input,
+.moshikomi-field textarea,
+.moshikomi-field select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid #4d463d;
+  border-radius: 0;
+  outline: none;
+  background: #12100f;
+  color: #ece8e2;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+}
+
+.moshikomi-field textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+
+.moshikomi-field input:focus,
+.moshikomi-field textarea:focus,
+.moshikomi-field select:focus {
+  border-color: #B08A4A;
+}
+
+.moshikomi-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.moshikomi-option {
+  position: relative;
+  display: block;
+  margin: 0;
+}
+
+.moshikomi-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.moshikomi-option span {
+  display: block;
+  padding: 10px 14px;
+  border: 1px solid #3f3a34;
+  color: #A1A1A1;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.moshikomi-option input:checked + span {
+  border-color: #B08A4A;
+  background: rgba(176, 138, 74, 0.08);
+  color: #B08A4A;
+}
+
+.moshikomi-option span:hover {
+  border-color: #777;
+  color: #ddd;
+}
+
+.moshikomi-conditional[hidden] {
+  display: none;
+}
+
+.moshikomi-btn {
+  height: 44px;
+  box-sizing: border-box;
+  padding: 0 22px;
+  border: 1px solid #B08A4A;
+  border-radius: 0;
+  background: transparent;
+  color: #B08A4A;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.moshikomi-btn:hover {
+  background: rgba(176, 138, 74, 0.08);
+}
+
+.moshikomi-btn-back {
+  border-color: #4d463d;
+  color: #999;
+}
+
+.moshikomi-btn-back:hover {
+  border-color: #777;
+  color: #ddd;
+}
+
+.moshikomi-step-btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.moshikomi-review {
+  border: 1px solid #302c28;
+  background: #100f0e;
+}
+
+.moshikomi-review-row {
+  display: grid;
+  grid-template-columns:  1fr;
+  gap: 12px;
+  padding: 7px 10px;
+  border-bottom: 1px solid #292522;
+}
+
+.moshikomi-review-row:last-child {
+  border-bottom: 0;
+}
+
+.moshikomi-review-label {
+  color: #B08A4A;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.moshikomi-review-value {
+  color: #A1A1A1;
+  padding: 0px 50px;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 500;
+  white-space: pre-wrap;
+}
+
+.moshikomi-send {
+  display: none;
+}
+
+.moshikomi-send.moshikomi-visible {
+  display: block;
+}
+
+.moshikomi-send p {
+  max-width: 580px;
+  margin: 0 0 25px;
+  color: #A1A1A1;
+  font-weight: 500;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.moshikomi-send-options {
+  display: flex;
+  gap: 12px;
+}
+
+.moshikomi-send-options button {
+  cursor: pointer;
+}
+
+.moshikomi-send-note {
+  margin-top: 18px !important;
+  color: #7e7e7e !important;
+  font-size: 12px !important;
+}
+
+body.moshikomi-locked {
+  overflow: hidden;
+}
+
+/* =========================================================
+   MOBILE — booking modal
+   ========================================================= */
+
+@media (max-width: 1640px) {
+  .moshikomi-overlay {
+    align-items: flex-start;
+    padding: 22px;
+  }
+  .moshikomi-modal {
+    max-height: 94vh;
+    padding: 32px 20px 28px;
+  }
+  .moshikomi-header {
+    margin-bottom: 28px;
+  }
+  .moshikomi-header h2 {
+    font-size: 21px;
+  }
+  .moshikomi-row {
+    grid-template-columns: 1fr;
+  }
+  .moshikomi-options {
+    gap: 7px;
+  }
+  .moshikomi-option span {
+    padding: 9px 11px;
+  }
+  .moshikomi-step-btns,
+  .moshikomi-send-options {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .moshikomi-btn {
+    width: 100%;
+  }
+  .moshikomi-review-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
+
+  /* ---------- FOOTER (matched to the index/artists-list page) ---------- */
+  footer{border-top:0px solid var(--line);padding:30px 0 25px;}
+  footer .hikae-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .ashimoto-nav{display:flex;gap:24px;flex-wrap:wrap;}
+  .ashimoto-label{
+    font-family:var(--font-subs);
+    font-size:var(--fs-nav);
+    font-weight:var(--fw-sans-medium);
+    letter-spacing:.1em;
+    color:var(--c-nav);
+    text-transform:uppercase;
+    font-style:normal;
+  }
+  .ashimoto-left{text-align:left;}
+  .ashimoto-right{text-align:right;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .hikae-wrap{padding:0 20px;}
+    .gaku-hero{grid-template-columns:1fr;}
+    .shokai-btn{margin-top:18px;padding-top:12px;margin-bottom:18px;padding-bottom:12px;}
+    .toiawase-box{margin-top:28px;padding-top:32px;margin-bottom:18px;padding-bottom:12px;}
+    /* Nav becomes a dropdown panel opened by the burger button (see lacey-griffiths.js)
+       instead of just disappearing with no way back in. */
+    .header-burger{display:flex;}
+    /* Compact panel anchored under the burger (right side), not a full-width
+       bar — so opening it and tapping a link both happen in the same spot
+       instead of the links sitting all the way over on the other side of
+       the screen from the button you just tapped. Text inside is still
+       left-aligned, it's just the panel itself that's right-anchored. */
+    nav{
+      display:none;
+      position:absolute;
+      /* Below the header's own edge (not flush at 100%) — clears the gold
+         line strip that hangs just past the header (.hikae-header::after)
+         and gives it a bit of breathing room off the monogram itself. */
+      top:calc(100% + 24px);
+      /* :0 here would sit flush with the header's own padding-box edge, i.e.
+         the window edge itself at mobile widths — position:absolute measures
+         from the padding edge, not the inset content edge, so it skips right
+         past the 20px gutter every other element gets from .hikae-wrap.
+         20px matches that same gutter explicitly. */
+      right:20px;
+      z-index:2;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      background:var(--header-bg);
+      border:1px solid var(--line);
+      padding:4px 18px 10px;
+    }
+    nav.nav-open{display:flex;}
+    nav a{padding:10px 0;width:100%;}
+    .yurai-portrait{
+      right:0;
+    }
+  }
+
+@media (max-width:720px){
+  .yurai-content{
+    grid-template-columns:1fr;
+  }
+  .yurai-portrait{
+    display:none;
+  }
+  .yurai-portrait-mobile{
+    display:block;
+    position:absolute;
+    right:0;
+    /* runs line to line: up to the rule above the section and down to the rule below it,
+       while the text keeps its normal 12px gap from those rules */
+    top:-12px;
+    bottom:-12px;
+    aspect-ratio:500 / 1024; /* box matches the image so all of it shows, including the swirl on its left */
+    /* full height, pinned to the right so none of the picture's right-hand side is cut; no fade */
+    background:url('images/jesseside.avif') right top/auto 100% no-repeat;
+    opacity:.28;
+    pointer-events:none;
+    z-index:1;
+  }
+  .yurai-text{position:relative;z-index:2;}
+
+  .toiawase-box{margin-top:28px;padding-top:32px;margin-bottom:18px;padding-bottom:12px;}
+  .toiawase-frame{
+    display:grid;
+    grid-template-columns:1fr auto;
+    grid-template-areas:
+      "intro intro"
+      "touch logo";
+    column-gap:16px;
+    border:1px solid var(--line);
+  }
+  .toiawase-col{border-right:none;border-bottom:none;padding:18px 20px;}
+  .toiawase-col:nth-child(1){grid-area:intro;padding-bottom:10px;}
+  .toiawase-col:nth-child(2){grid-area:touch;padding-top:10px;}
+  .toiawase-col:nth-child(2) .suji-rule{display:none;}
+  .toiawase-col:nth-child(2) h3{margin-bottom:8px;}
+  .toiawase-col:nth-child(2) .toiawase-line{margin-bottom:8px;}
+  .toiawase-col:nth-child(2) .toiawase-line:last-child{margin-bottom:0;}
+  .toiawase-col:nth-child(3){grid-area:logo;padding-top:4px;padding-left:0;}
+  .horishi-seal-wrap{
+    justify-content:flex-end;
+    align-items:flex-end;
+    height:auto;
+  }
+  .horishi-seal img{width:130px;}
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .gaku-hero {
+     grid-template-columns: 28% 1fr 150px;
+     gap: 12px;
+    }
+    .gaku-lede {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .gaku-lede br {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .meibo-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 12px;
+    }
+    /* Visual order only (mobile 2x2) — desktop keeps the DOM's own vertical
+       order of Known For, Experience, Wait Time, Socials. */
+    .meibo-known-for{order:1;}
+    .meibo-socials{order:2;}
+    .meibo-wait-time{order:3;}
+    .meibo-experience{order:4;}
+}
+
+@media (max-width:1100px){
+  .hikae-wrap{padding-left:20px;padding-right:20px;}
+}
+
+  @media (max-width:620px){
+    :root{--fs-artist-name:42px;}
+    .shokai-btn{margin-top:12px;padding-top:12px;margin-bottom:0px;padding-bottom:12px;}
+    .toiawase-box{margin-top:28px;padding-top:32px;margin-bottom:18px;padding-bottom:12px;}
+    .meibo-list{margin-top:18px;}
+    .horishi-seal img {
+        width: 110px;
+    }
+  }
+
+  /* ---------- Booking boxes: mobile width behaviour ---------- */
+  @media (max-width:620px){
+    .shokai-row{
+      display:flex;
+      width:100%;
+      gap:8px;
+    }
+    .shokai-btn{
+      flex:1 1 0;
+      margin-right:0;
+      justify-content:center;
+      text-align:center;
+    }
+  }
+
+@media (min-width: 1101px) {
+    .gaku-portrait {
+        width: 260px;
+        height: 280px;
+        background-position: center top;
+    }
+}
+@media (max-width: 1100px) {
+    .gaku-portrait {
+        width: 270px;
+        height: 280px;
+        background-position: center top;
+    }
+}
+@media (max-width: 768px) {
+    .gaku-portrait {
+        width:190px;
+        height: 320px;
+    }
+}
+@media (max-width: 425px)  {
+    /* Fluid width, not a fixed px — a fixed width here (previously 380px/320px)
+       is wider than the available content area at small phone widths (e.g.
+       320px viewport minus 40px of wrap padding = 280px), which forced the
+       whole page to overflow horizontally. That overflow is what was throwing
+       off the right-hand spacing across every section below the hero, not
+       just the hero photo itself. */
+    .gaku-portrait {
+        width: 100%;
+        height: 340px;
+        background-position: center top;
+    }
+}
+
+  /* Known For / Experience — desktop: push the list down so it starts level with
+     the paragraph text under Lacey's name (name stays the highest text on the page),
+     instead of lining up with the very top of the hero. */
+  @media (min-width:768px){
+    .meibo-list{margin-top:50px;}
+  }
