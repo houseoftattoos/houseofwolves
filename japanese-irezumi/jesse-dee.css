@@ -1266,12 +1266,14 @@ body.moshikomi-locked {
     display:block;
     position:absolute;
     right:0;
-    top:0;
-    height:100%;
-    width:45%;
-    background:url('images/jesseside.avif') center/cover no-repeat;
+    /* runs line to line: up to the rule above the section and down to the rule below it,
+       while the text keeps its normal 12px gap from those rules */
+    top:-12px;
+    bottom:-12px;
+    aspect-ratio:500 / 1024; /* box matches the image so all of it shows, including the swirl on its left */
+    /* full height, pinned to the right so none of the picture's right-hand side is cut; no fade */
+    background:url('images/jesseside.avif') right top/auto 100% no-repeat;
     opacity:.28;
-    mask-image:linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
     pointer-events:none;
     z-index:1;
   }
