@@ -46,7 +46,7 @@
 
 
   
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/styles.css?v=20261017">
 
 <link rel="preload" href="/images/raijin-banner-japanese-irezumi-jesse-dee-geelong-house-of-wolves.avif" as="image" media="(min-width: 668px)" fetchpriority="high">
 <link rel="preload" href="/images/delorean-banner-back-future-illustrative-scott-russell-geelong-house-of-wolves.avif" as="image" media="(min-width: 668px)" fetchpriority="high">
@@ -57,7 +57,6 @@
 {
   "@context": "https://schema.org",
   "@graph": [
-
     {
       "@type": "WebSite",
       "@id": "https://houseofwolvestattoo.com.au/#website",
@@ -69,7 +68,7 @@
       "inLanguage": "en-AU"
     },
     {
-      "@type": "WebPage",
+      "@type": "CollectionPage",
       "@id": "https://houseofwolvestattoo.com.au/#webpage",
       "url": "https://houseofwolvestattoo.com.au/",
       "name": "House of Wolves Tattoo [Geelong] Japanese, Trad & Fine Line",
@@ -80,13 +79,76 @@
         "@id": "https://houseofwolvestattoo.com.au/#studio"
       },
       "mainEntity": {
-        "@id": "https://houseofwolvestattoo.com.au/#studio"
+        "@id": "https://houseofwolvestattoo.com.au/#artists"
       },
       "inLanguage": "en-AU"
     },
-
-{
-      "@type": ["TattooShop", "TattooParlor"],
+    {
+      "@type": "ItemList",
+      "@id": "https://houseofwolvestattoo.com.au/#artists",
+      "name": "House of Wolves Tattoo Artists",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://houseofwolvestattoo.com.au/japanese-irezumi/jesse-dee.html",
+          "name": "Jesse Dee",
+          "item": {
+            "@id": "https://houseofwolvestattoo.com.au/japanese-irezumi/jesse-dee.html#person"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://houseofwolvestattoo.com.au/irezumi-american-traditional/shannon-hodgkin.html",
+          "name": "Shannon Hodgkin",
+          "item": {
+            "@id": "https://houseofwolvestattoo.com.au/irezumi-american-traditional/shannon-hodgkin.html#person"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://houseofwolvestattoo.com.au/american-traditional/joshua-reynolds.html",
+          "name": "Joshua Reynolds",
+          "item": {
+            "@id": "https://houseofwolvestattoo.com.au/american-traditional/joshua-reynolds.html#person"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "url": "https://houseofwolvestattoo.com.au/fine-line/scott-russell.html",
+          "name": "Scott Russell",
+          "item": {
+            "@id": "https://houseofwolvestattoo.com.au/fine-line/scott-russell.html#person"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "url": "https://houseofwolvestattoo.com.au/neo-traditional/lacey-griffiths.html",
+          "name": "Lacey Griffiths",
+          "item": {
+            "@id": "https://houseofwolvestattoo.com.au/neo-traditional/lacey-griffiths.html#person"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "url": "https://houseofwolvestattoo.com.au/geometric/mark-noel.html",
+          "name": "Mark Noel",
+          "item": {
+            "@id": "https://houseofwolvestattoo.com.au/geometric/mark-noel.html#person"
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "TattooShop",
+        "TattooParlor"
+      ],
       "@id": "https://houseofwolvestattoo.com.au/#studio",
       "name": "House of Wolves Tattoo",
       "url": "https://houseofwolvestattoo.com.au/",
@@ -106,13 +168,11 @@
         "postalCode": "3218",
         "addressCountry": "AU"
       },
-
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": -38.14213,
         "longitude": 144.34832
       },
-
       "areaServed": [
         {
           "@type": "AdministrativeArea",
@@ -140,7 +200,6 @@
           "@id": "https://www.wikidata.org/wiki/Q3778254"
         }
       ],
-
       "knowsAbout": [
         {
           "@type": "DefinedTerm",
@@ -179,7 +238,6 @@
         "Black and Grey Tattooing",
         "Illustrative Tattooing"
       ],
-
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "@id": "https://houseofwolvestattoo.com.au/#tattoo-styles",
@@ -198,7 +256,7 @@
               },
               "areaServed": {
                 "@type": "City",
-                "name": "Geelong"              
+                "name": "Geelong"
               }
             }
           },
@@ -209,13 +267,13 @@
               "@id": "https://houseofwolvestattoo.com.au/#american-traditional",
               "name": "American Traditional Tattooing",
               "description": "Custom American Traditional tattooing.",
-            "serviceType": "American Traditional Tattooing",
+              "serviceType": "American Traditional Tattooing",
               "provider": {
                 "@id": "https://houseofwolvestattoo.com.au/#studio"
               },
               "areaServed": {
                 "@type": "City",
-                "name": "Geelong"            
+                "name": "Geelong"
               }
             }
           },
@@ -226,7 +284,7 @@
               "@id": "https://houseofwolvestattoo.com.au/#neo-traditional",
               "name": "Neo-Traditional Tattooing",
               "description": "Custom Neo-Traditional tattooing with bold illustrative design and richly coloured work.",
-            "serviceType": "Neo-Traditional Tattooing",
+              "serviceType": "Neo-Traditional Tattooing",
               "provider": {
                 "@id": "https://houseofwolvestattoo.com.au/#studio"
               },
@@ -243,7 +301,7 @@
               "@id": "https://houseofwolvestattoo.com.au/#fine-line",
               "name": "Fine Line Tattooing",
               "description": "Custom Fine Line and illustrative tattoo design with precise linework.",
-            "serviceType": "Fine Line Tattooing",
+              "serviceType": "Fine Line Tattooing",
               "provider": {
                 "@id": "https://houseofwolvestattoo.com.au/#studio"
               },
@@ -255,7 +313,6 @@
           }
         ]
       },
-
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -270,210 +327,31 @@
           "closes": "18:00"
         }
       ],
-
       "sameAs": [
         "https://www.instagram.com/houseofwolvestattoo_/",
         "https://www.facebook.com/houseofwolvestattooco/"
-        
       ],
-
       "founder": {
-        "@id": "https://houseofwolvestattoo.com.au/#artist1"
+        "@id": "https://houseofwolvestattoo.com.au/japanese-irezumi/jesse-dee.html#person"
       },
-
       "employee": [
         {
-          "@id": "https://houseofwolvestattoo.com.au/#artist2"
+          "@id": "https://houseofwolvestattoo.com.au/fine-line/scott-russell.html#person"
         },
         {
-          "@id": "https://houseofwolvestattoo.com.au/#artist3"
+          "@id": "https://houseofwolvestattoo.com.au/american-traditional/joshua-reynolds.html#person"
         },
         {
-          "@id": "https://houseofwolvestattoo.com.au/#artist4"
+          "@id": "https://houseofwolvestattoo.com.au/irezumi-american-traditional/shannon-hodgkin.html#person"
         },
         {
-          "@id": "https://houseofwolvestattoo.com.au/#artist5"
+          "@id": "https://houseofwolvestattoo.com.au/neo-traditional/lacey-griffiths.html#person"
         },
         {
-          "@id": "https://houseofwolvestattoo.com.au/#artist6"
+          "@id": "https://houseofwolvestattoo.com.au/geometric/mark-noel.html#person"
         }
-      ]
-    },
-
-
-    {
-      "@type": "Person",
-      "@id": "https://houseofwolvestattoo.com.au/#artist1",
-      "name": "Jesse Dee",
-      "alternateName": "jessedeetattooer",
-      "url": "https://houseofwolvestattoo.com.au/",
-      "image": "https://houseofwolvestattoo.com.au/images/house-of-wolves-tattoo-geelong-jesse-dee-banner.webp",
-      "description": "Jesse Dee is a tattoo artist and founder and owner of House of Wolves in Geelong, specialising in Japanese Irezumi, Neo-Traditional tattooing and large-scale tattoo work.",
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Tattoo Artist"
-      },
-      "jobTitle": "Founder & Owner",
-      "worksFor": {
-        "@id": "https://houseofwolvestattoo.com.au/#studio"
-      },
-      "knowsAbout": [
-        {
-          "@type": "DefinedTerm",
-          "name": "Japanese Irezumi",
-          "sameAs": "https://www.wikidata.org/wiki/Q3183723"
-        },
-        "Neo-Traditional Tattooing",
-        "Large-Scale Tattooing"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/jessedeetattooer/"
-      ]
-    },
-
-
-    {
-      "@type": "Person",
-      "@id": "https://houseofwolvestattoo.com.au/#artist2",
-      "name": "Scott Russell",
-      "alternateName": "scottrussell_tattoo",
-      "url": "https://houseofwolvestattoo.com.au/",
-      "image": "https://houseofwolvestattoo.com.au/full/skyline-car-fine-line-precision-scott-russell-geelong-house-of-wolves.avif",
-      "description": "Scott Russell is a tattoo artist and Fine Line specialist at House of Wolves in Geelong, known for precise Fine Line work and original custom tattoo design.",
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Tattoo Artist"
-      },
-      "worksFor": {
-        "@id": "https://houseofwolvestattoo.com.au/#studio"
-      },
-      "knowsAbout": [
-        "Fine Line Tattooing",
-        "Custom Tattoo Design",
-        "Illustrative Tattooing"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/scottrussell_tattoo/"
-      ]
-    },
-
-
-    {
-      "@type": "Person",
-      "@id": "https://houseofwolvestattoo.com.au/#artist3",
-      "name": "Joshua Reynolds",
-      "alternateName": "Josh Reynolds",
-      "url": "https://houseofwolvestattoo.com.au/",
-      "image": "https://houseofwolvestattoo.com.au/full/witch-globe-american-traditional-joshua-reynolds-geelong-house-of-wolves.avif",
-      "description": "Joshua Reynolds is a tattoo artist and American Traditional specialist at House of Wolves in Geelong, known for dark imagery, solid linework and original custom tattoo designs.",
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Tattoo Artist"
-      },
-      "worksFor": {
-        "@id": "https://houseofwolvestattoo.com.au/#studio"
-      },
-      "knowsAbout": [
-        {
-          "@type": "DefinedTerm",
-          "name": "American Traditional Tattooing",
-          "sameAs": "https://www.wikidata.org/wiki/Q613135"
-        },
-        "Black and Grey Tattooing",
-        "Bold and Bright Tattooing",
-        "Custom Tattoo Design"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/joshua.reynolds.tattoo/"
-      ]
-    },
-
-
-    {
-      "@type": "Person",
-      "@id": "https://houseofwolvestattoo.com.au/#artist4",
-      "name": "Shannon Hodgkin",
-      "alternateName": "hodgkintattoo",
-      "url": "https://houseofwolvestattoo.com.au/",
-      "image": "https://houseofwolvestattoo.com.au/full/hannya-dragon-back-piece-japanese-shannon-hodgkin-geelong-house-of-wolves.avif",
-      "description": "Shannon Hodgkin is a tattoo artist at House of Wolves in Geelong, specialising in Japanese Irezumi and American Traditional tattooing.",
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Tattoo Artist"
-      },
-      "worksFor": {
-        "@id": "https://houseofwolvestattoo.com.au/#studio"
-      },
-      "knowsAbout": [
-        {
-          "@type": "DefinedTerm",
-          "name": "American Traditional Tattooing",
-          "sameAs": "https://www.wikidata.org/wiki/Q613135"
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "Japanese Irezumi",
-          "sameAs": "https://www.wikidata.org/wiki/Q3183723"
-        }
-      ],
-      "sameAs": [
-        "https://www.instagram.com/hodgkintattoo/"
-      ]
-    },
-
-
-    {
-      "@type": "Person",
-      "@id": "https://houseofwolvestattoo.com.au/#artist5",
-      "name": "Lacey Griffiths",
-      "alternateName": "laceygriffithstattoo",
-      "url": "https://houseofwolvestattoo.com.au/",
-      "image": "https://houseofwolvestattoo.com.au/full/female-samurai-back-neo-traditional-lacey-griffiths-geelong-house-of-wolves.avif",
-      "description": "Lacey Griffiths is a tattoo artist and Neo-Traditional specialist at House of Wolves in Geelong, known for colour blending, mythological themes and original custom tattoo designs.",
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Tattoo Artist"
-      },
-      "worksFor": {
-        "@id": "https://houseofwolvestattoo.com.au/#studio"
-      },
-      "knowsAbout": [
-        "Neo-Traditional Tattooing",
-        "Illustrative Tattooing",
-        "Custom Tattoo Design"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/laceygriffithstattoo/"
-      ]
-    },
-
-
-    {
-      "@type": "Person",
-      "@id": "https://houseofwolvestattoo.com.au/#artist6",
-      "name": "Mark Noel",
-      "alternateName": "marknoeltattoo",
-      "url": "https://houseofwolvestattoo.com.au/",
-      "image": "https://houseofwolvestattoo.com.au/full/geometric-star-girih-abstract-mark-noel-geelong-house-of-wolves.avif",
-      "description": "Mark Noel is a tattoo artist specialising in Geometric, Abstract and Ornamental tattooing at House of Wolves in Geelong, known for balance, symmetry and original custom tattoo designs.",
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Tattoo Artist"
-      },
-      "worksFor": {
-        "@id": "https://houseofwolvestattoo.com.au/#studio"
-      },
-      "knowsAbout": [
-        "Geometric Tattooing",
-        "Abstract Tattooing",
-        "Ornamental Tattooing",
-        "Sacred Geometry"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/marknoeltattoo/"
       ]
     }
-
   ]
 }
 </script>
@@ -485,6 +363,24 @@
 
 
 <body>
+
+<!-- Site header: sits above everything (hero included). Same markup as the other pages. -->
+<header class="hikae-header">
+  <div class="hikae-wrap header-inner">
+    <a href="https://houseofwolvestattoo.com.au/" class="horishi-mark" aria-label="House of Wolves Tattoo — view all artists">
+      <img src="images/house-of-wolves-wordmark.avif" alt="House of Wolves Tattoo" class="header-wordmark" width="487" height="87">
+    </a>
+    <nav id="site-nav">
+      <a href="https://houseofwolvestattoo.com.au/" class="kumi-link active" aria-current="page">Artists</a>
+      <a href="https://houseofwolvestattoo.com.au/contactus.html" class="kumi-link">Contact</a>
+      <a href="https://houseofwolvestattoo.com.au/faq.html" class="kumi-link">FAQ</a>
+      <a href="https://instagram.com/houseofwolvestattoo_" target="_blank" rel="noopener noreferrer" class="kumi-link">Socials</a>
+    </nav>
+    <button type="button" class="header-burger" id="header-burger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <img src="images/menu-monogram.avif" alt="" class="header-burger-mark" width="192" height="260">
+    </button>
+  </div>
+</header>
 
 <div class="mobile-raijin">
 
@@ -528,16 +424,7 @@ and <span class="accent-champagne">American Traditional</span>
  </div>
 
 
-<header>
-  <div class="wrap">
-    <div class="logo">
-           
-      <span></span>
-      
-      </div>
- 
-  </div>
-</header>
+
 
 
 
@@ -636,6 +523,12 @@ and <span class="accent-champagne">American Traditional.</span>
 
     <section class="artist-list artist-list--jp">
 
+        <!-- NOTE (artist cards): each card's <a> opens inside .artist-portrait and closes
+             after .artist-info, so it spans two sibling divs (not strictly valid HTML).
+             The browser repairs it and the layout is tuned to that, so it has been left
+             exactly as it was and only the href was changed (Instagram -> artist page).
+             Nesting it properly changes the card formatting; test before "fixing". -->
+
         <!-- ===========================
              JESSE DEE
         ============================ -->
@@ -646,9 +539,7 @@ and <span class="accent-champagne">American Traditional.</span>
 
                 <div class="artist-portrait">
  <a
-   href="https://www.instagram.com/jessedeetattooer/"
-   target="_blank"
-   rel="noopener noreferrer">
+   href="https://houseofwolvestattoo.com.au/japanese-irezumi/jesse-dee.html">
                     <img
                         src="images/portrait-photo-jesse-dee-geelong-house-of-wolves.avif"
                         alt="Portrait of Jesse Dee"
@@ -774,9 +665,7 @@ height="160"
 
                 <div class="artist-portrait">
  <a 
-   href="https://www.instagram.com/hodgkintattoo/"
-   target="_blank"
-   rel="noopener noreferrer">
+   href="https://houseofwolvestattoo.com.au/irezumi-american-traditional/shannon-hodgkin.html">
                     <img
                         src="images/portrait-photo-shannon-hodgkin-geelong-house-of-wolves.avif"
                         alt="Portrait of Shannon Hodgkin"
@@ -863,9 +752,7 @@ and his American Traditional pieces show his roots in bold, classic tattooing.
 
                 <div class="artist-portrait">
 <a 
-   href="https://www.instagram.com/joshua.reynolds.tattoo/"
-   target="_blank"
-   rel="noopener noreferrer">
+   href="https://houseofwolvestattoo.com.au/american-traditional/joshua-reynolds.html">
                     <img
                         src="images/portrait-photo-joshua-reynolds-geelong-house-of-wolves.avif"
                         alt="Portrait of Joshua Reynolds"
@@ -1020,9 +907,7 @@ Set's Joshua's style, Medi-evil.
 
                 <div class="artist-portrait">
 <a 
-   href="https://www.instagram.com/scottrussell_tattoo/"
-   target="_blank"
-   rel="noopener noreferrer">
+   href="https://houseofwolvestattoo.com.au/fine-line/scott-russell.html">
                     <img
                         src="images/portrait-photo-scott-russell-geelong-house-of-wolves.avif"
                         alt="Portrait of Scott Russell"
@@ -1155,9 +1040,7 @@ height="160"
 
                 <div class="artist-portrait">
 <a
-   href="https://www.instagram.com/laceygriffithstattoo/"
-   target="_blank"
-   rel="noopener noreferrer">
+   href="https://houseofwolvestattoo.com.au/neo-traditional/lacey-griffiths.html">
                     <img
                         src="images/portrait-photo-lacey-griffiths-geelong-house-of-wolves.avif"
                         alt="Portrait of Lacey Griffiths"
@@ -1241,9 +1124,7 @@ height="160"
 
                 <div class="artist-portrait">
  <a
-                href="https://www.instagram.com/marknoeltattoo/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="https://houseofwolvestattoo.com.au/geometric/mark-noel.html"
                 class="artist-info-link">
                     <img
                         src="images/portrait-photo-mark-noel-geelong-house-of-wolves.avif"
@@ -1488,7 +1369,7 @@ height="160"
 
 
 
-<script src="js/script.js" defer></script>
+<script src="js/script.js?v=20261017" defer></script>
 
 
 

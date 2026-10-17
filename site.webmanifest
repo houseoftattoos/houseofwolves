@@ -1,6 +1,11 @@
 {
+  "id": "/",
   "name": "House of Wolves Tattoo",
   "short_name": "House of Wolves",
+  "description": "Geelong Custom Tattoo Studio - Artists specialising in Japanese Irezumi, American & Neo Traditional and Fine Line tattooing.",
+  "lang": "en-AU",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

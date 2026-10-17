@@ -637,7 +637,7 @@ inset:0;
         transform:none;
         z-index:1;
         pointer-events:none;
-        background-image:url('/images/raijin-back-japanese-irezumi-jesse-dee-geelong-house-of-wolves911-load.webp');
+        background-image:url('images/raijin-back-japanese-irezumi-jesse-dee-geelong-house-of-wolves911-load.webp');
         background-size:cover;
         background-position:center;
         background-repeat:no-repeat;
@@ -655,7 +655,7 @@ inset:0;
         transform:none;
         z-index:1;
         pointer-events:none;
-        background-image:url('/images/delorean-back-future-illustrative-scott-russell-geelong-house-of-wolves-load.webp');
+        background-image:url('images/delorean-back-future-illustrative-scott-russell-geelong-house-of-wolves-load.webp');
         background-size:cover;
         background-position:center;
         background-repeat:no-repeat;
@@ -974,11 +974,11 @@ width: 380px;
 }
 
 .japanese-banner-photo {
-    background-image:url('/images/raijin-banner-japanese-irezumi-jesse-dee-geelong-house-of-wolves-load.webp');
+    background-image:url('images/raijin-banner-japanese-irezumi-jesse-dee-geelong-house-of-wolves-load.webp');
 }
 
 .fineline-banner-photo {
-    background-image:url('/images/delorean-banner-back-future-illustrative-scott-russell-geelong-house-of-wolves-load.webp');
+    background-image:url('images/delorean-banner-back-future-illustrative-scott-russell-geelong-house-of-wolves-load.webp');
 }
 
 /* Once script.js confirms the real full-size image has loaded, it adds
@@ -1169,4 +1169,87 @@ width: 380px;
     color:#A1A1A1;
     text-transform:uppercase;
     text-align:right;
+}
+
+
+/* ==========================================
+   SITE HEADER (same as the artist / FAQ / contact pages)
+   Sticky, in normal flow above everything. Scoped to
+   .hikae-header so it does not touch the old header rules.
+========================================== */
+.hikae-header{
+    --header-bg:#0b0a09;
+    --line:#3f3017;
+    --header-mark-h:40px;
+    --wrap-pad:12px;
+    position:sticky;
+    top:0;
+    left:auto;
+    width:auto;
+    z-index:500;
+    background:var(--header-bg);
+    padding:14px 0;
+    /* cancel the browser's default 8px body margin so the header is flush
+       with the top and sides, same as the other pages */
+    margin:-8px -8px 0;
+}
+.hikae-header .hikae-wrap{max-width:1120px;margin:0 auto;padding:0 12px;}
+.hikae-header .header-inner{display:flex;align-items:center;justify-content:space-between;position:relative;}
+.hikae-header .header-inner::after{
+    content:"";
+    position:absolute;
+    left:var(--wrap-pad);
+    right:var(--wrap-pad);
+    bottom:-14px;
+    height:1px;
+    background:var(--line);
+    pointer-events:none;
+}
+.hikae-header .horishi-mark{display:flex;align-items:center;}
+.hikae-header .header-wordmark{height:var(--header-mark-h);width:auto;display:block;}
+.hikae-header nav{display:flex;align-items:center;gap:30px;}
+.hikae-header .kumi-link{
+    font-family:"Montserrat", sans-serif;
+    font-weight:500;
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#a1a1a1;
+}
+.hikae-header .kumi-link:hover{color:#B08A4A;}
+.hikae-header nav a.active{color:#B08A4A;}
+.hikae-header .header-burger{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    padding:0;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+}
+.hikae-header .header-burger-mark{height:var(--header-mark-h);width:auto;display:block;}
+
+@media (max-width:1100px){
+    .hikae-header{--wrap-pad:20px;}
+    .hikae-header .hikae-wrap{padding-left:20px;padding-right:20px;}
+}
+@media (max-width:920px){
+    .hikae-header .header-burger{display:flex;}
+    .hikae-header nav{
+        display:none;
+        position:absolute;
+        top:calc(100% + 24px);
+        right:20px;
+        z-index:2;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0;
+        background:var(--header-bg);
+        border:1px solid var(--line);
+        padding:4px 18px 10px;
+    }
+    .hikae-header nav.nav-open{display:flex;}
+    .hikae-header nav a{padding:10px 0;width:100%;}
 }
