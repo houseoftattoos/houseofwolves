@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const style = data.style || "";
         captionTop.textContent = [artist, style].filter(Boolean).join(" · ");
         captionSub.textContent = data.subject || "";
+        img.alt = thumbs[index].alt || "";
     }
 
     function openLightbox(i) {

@@ -1288,3 +1288,32 @@ width: 380px;
     .hikae-header nav.nav-open{display:flex;}
     .hikae-header nav a{padding:10px 0;width:100%;}
 }
+
+
+/* Visually hidden text (still read by search engines and screen readers) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* The small gold section labels on the index are real headings now.
+   These rules make them render exactly as the <p class="artist-primary"> labels did. */
+.studio-info h2.artist-primary {
+    margin: 0 0 4px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 2px;
+    color: #B08A4A;
+    text-transform: uppercase;
+}
+.studio-info h2.artist-primary.mt-24 { margin-top: 24px; }
+.studio-info h2.artist-primary.artist-primary-spacing { margin: 24px 0 12px; }
