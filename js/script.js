@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const lightbox = document.getElementById("lightbox");
     const img = document.getElementById("img");
     const viewer = document.getElementById("viewer");
+    const captionTop = document.getElementById("lightbox-caption-top");
+    const captionSub = document.getElementById("lightbox-caption-sub");
 
     let index = 0;
     let scale = 1, x = 0, y = 0;
@@ -29,8 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     window.addEventListener("resize", updateViewerDimensions);
 
+    function updateCaption() {
+        if (!captionTop || !captionSub) return;
+        const data = thumbs[index].dataset;
+        const artist = data.artist || "";
+        const style = data.style || "";
+        captionTop.textContent = [artist, style].filter(Boolean).join(" · ");
+        captionSub.textContent = data.subject || "";
+    }
+
     function openLightbox(i) {
         index = (i + thumbs.length) % thumbs.length;
+        updateCaption();
         
         // Step 1: Smoothly dissolve the current asset away
         img.style.opacity = "0";

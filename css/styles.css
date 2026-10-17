@@ -500,6 +500,41 @@ font-weight:600;
     .help-desktop{display:none;}
 }
 
+/* Artist / style / subject caption: same as the artist pages' lightbox */
+.lightbox-caption {
+    position: absolute;
+    left: 50%;
+    top: 95.2%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    max-width: min(70vw, 320px);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    text-align: center;
+    line-height: 1.6;
+    pointer-events: none;
+}
+#lightbox-caption-top,
+#lightbox-caption-sub {
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#lightbox-caption-top {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+}
+#lightbox-caption-sub {
+    color: var(--gold);
+    margin-top: 2px;
+}
+
 
   .gallery,
   .gallery *,
