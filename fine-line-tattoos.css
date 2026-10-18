@@ -1,0 +1,385 @@
+  /* Tokens, fonts, header, contact box and footer are taken
+     from jesse-dee.css so this page matches the rest of the site. Kept in its
+     own file (faq.css) so each page has a separate stylesheet. No inline
+     styles are used anywhere on this page, for a strict CSP. */
+
+  /* Self-hosted woff2s (same files as the Jesse page, loaded from /fonts). */
+  @font-face {
+    font-display: swap;
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 500;
+    src: url("fonts/merriweather-v33-latin-500.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 600;
+    src: url("fonts/merriweather-v33-latin-600.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/montserrat-v31-latin-regular.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    src: url("fonts/montserrat-v31-latin-500.woff2") format("woff2");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    src: url("fonts/montserrat-v31-latin-600.woff2") format("woff2");
+  }
+
+  :root{
+    /* ---- color ---- */
+    --bg:#0b0a09;
+    --header-bg:var(--bg);
+    --header-mark-h:40px;
+    --line: #3f3017;
+    --c-heading:#D8D4CC;
+    --c-gold:#B08A4A;
+    --c-nav:#a1a1a1;
+    --c-body:#a1a1a1;
+    --c-small-info:#a1a1a1;
+    --c-hover-text:#d6cec0;
+    --artist-white:#ece8e2;
+
+    /* ---- font families (TWO only) ---- */
+    --font-display: "Merriweather", Georgia, serif;
+    --font-sans: "Montserrat", Helvetica, Arial, sans-serif;
+    --font-subs: "Montserrat" , sans-serif;
+
+    /* ---- weights ---- */
+    --fw-display:500;
+    --fw-display2:600;
+    --fw-display3:600;
+    --fw-sans-light:400;
+    --fw-sans-regular:400;
+    --fw-sans-medium:500;
+
+    /* ---- font sizes (same set as the Jesse page) ---- */
+    --fs-artist-name:42px;
+    --fs-subtitle:14px;
+    --fs-body:14px;
+    --fs-small-info:14px;
+    --fs-section-label:14px;
+    --fs-nav:12px;
+
+    /* ---- line-height ---- */
+    --lh-artist-name:1;
+    --lh-body:1.4;
+    --lh-small-info:1.4;
+    --lh-section-label:1;
+
+    /* ---- letter-spacing ---- */
+    --ls-artist-name:.018em;
+    --ls-body:.0em;
+    --ls-small-info:.02em;
+    --ls-section-label:.14em;
+    --ls-nav:.1em;
+
+    /* ---- spacing rules ---- */
+    --space-1:12px;
+    --space-2:24px;
+    --space-3:36px;
+    --space-4:48px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth; scrollbar-gutter: stable;}
+
+  body{
+    background:var(--bg);
+    color:var(--c-body);
+    font-family:var(--font-sans);
+    font-weight:var(--fw-sans-light);
+    font-size:var(--fs-body);
+    line-height:var(--lh-body);
+    letter-spacing:var(--ls-body);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img, svg{display:block;}
+  a{color:inherit;text-decoration:none;}
+
+  :root{--wrap-pad:12px;}
+  @media (max-width:1100px){:root{--wrap-pad:20px;}}
+  .hikae-wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 12px;
+  }
+
+  /* ---------- shared type roles ---------- */
+  .midashi-label{
+    font-family:var(--font-subs);
+    font-weight:var(--fw-display2);
+    font-size:var(--fs-section-label);
+    letter-spacing:var(--ls-section-label);
+    line-height:var(--lh-section-label);
+    text-transform:uppercase;
+    color:var(--c-gold);
+  }
+  .suji-rule{
+    width:24px;height:1px;background:var(--c-gold);margin-top:12px;
+  }
+
+  .kumi-link{
+    font-family:var(--font-subs);
+    font-weight:var(--fw-sans-medium);
+    font-size:var(--fs-nav);
+    letter-spacing:var(--ls-nav);
+    text-transform:uppercase;
+    color:var(--c-nav);
+  }
+  .kumi-link:hover{color:var(--c-gold);}
+
+  .honbun-text{
+    font-family:var(--font-sans);
+    font-weight:var(--fw-sans-light);
+    font-size:var(--fs-body);
+    line-height:var(--lh-body);
+    letter-spacing:var(--ls-body);
+    color:var(--c-body);
+    max-width:68ch;
+  }
+
+  /* ---------- HEADER (sticky — identical to the Jesse page) ---------- */
+  .hikae-header{
+    position:sticky;
+    top:0;
+    z-index:500;
+    background:var(--header-bg);
+    padding:14px 0;
+  }
+  .hikae-header .header-inner::after{
+    content:"";
+    position:absolute;
+    left:var(--wrap-pad);
+    right:var(--wrap-pad);
+    bottom:-14px;
+    height:1px;
+    background:var(--line);
+    pointer-events:none;
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;position:relative;}
+  .horishi-mark{display:flex;align-items:center;}
+  .header-wordmark{
+    height:var(--header-mark-h);
+    width:auto;
+    display:block;
+  }
+  nav{display:flex;align-items:center;gap:30px;}
+  nav a.active{color:var(--c-gold);}
+  .header-burger{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    padding:0;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+  }
+  .header-burger-mark{height:var(--header-mark-h);width:auto;display:block;}
+
+  /* ---------- INTRO ---------- */
+  .intro{padding:var(--space-4) 0 var(--space-2);}
+  .intro-flex{display:flex;gap:var(--space-3);align-items:stretch;}
+  .intro-rule{flex:0 0 1px;background:var(--line);}
+  .intro-text h1{
+    font-family:var(--font-display);
+    font-weight:var(--fw-display3);
+    font-size:var(--fs-artist-name);
+    line-height:var(--lh-artist-name);
+    letter-spacing:var(--ls-artist-name);
+    text-transform:uppercase;
+    color:var(--c-heading);
+    margin-top:var(--space-1);
+  }
+  .intro-text .suji-rule{margin-bottom:0;}
+  .intro-text .honbun-text{margin-top:var(--space-1);}
+
+  /* ---------- CONTACT BOX (single column; same type and spacing as Jesse's box) ---------- */
+  .toiawase-box{padding:36px 0 24px;}
+  .toiawase-frame{border:1px solid var(--line);}
+  .toiawase-col{padding:20px 24px;}
+  .toiawase-col h2{
+    font-family:var(--font-display);
+    font-weight:var(--fw-display);
+    font-size:var(--fs-subtitle);
+    line-height:1.3;
+    letter-spacing:.01em;
+    color:var(--c-heading);
+    margin-top:var(--space-1);
+  }
+  .toiawase-intro-text{font-size:var(--fs-small-info);line-height:var(--lh-small-info);margin-top:var(--space-1);}
+  .toiawase-link{
+    display:inline-block;
+    margin-top:var(--space-1);
+    font-family:var(--font-subs);
+    font-weight:var(--fw-sans-medium);
+    font-size:var(--fs-nav);
+    letter-spacing:var(--ls-nav);
+    text-transform:uppercase;
+    color:var(--c-gold);
+    transition:color .2s ease;
+  }
+  .toiawase-link:hover{color:var(--c-hover-text);}
+
+  /* ---------- FOOTER (identical to the Jesse page) ---------- */
+  footer{border-top:0px solid var(--line);padding:30px 0 25px;}
+  footer .hikae-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .ashimoto-label{
+    font-family:var(--font-subs);
+    font-size:var(--fs-nav);
+    font-weight:var(--fw-sans-medium);
+    letter-spacing:.1em;
+    color:var(--c-nav);
+    text-transform:uppercase;
+    font-style:normal;
+  }
+  .ashimoto-left{text-align:left;}
+  .ashimoto-right{text-align:right;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1100px){
+    .hikae-wrap{padding-left:20px;padding-right:20px;}
+  }
+
+  @media (max-width:920px){
+    .hikae-wrap{padding-left:20px;padding-right:20px;}
+    .intro-rule{display:none;}
+    .intro{padding-top:var(--space-2);}
+    .toiawase-box{margin-top:28px;padding-top:32px;margin-bottom:18px;padding-bottom:12px;}
+    /* Nav becomes a dropdown panel opened by the burger (see faq.js). */
+    .header-burger{display:flex;}
+    nav{
+      display:none;
+      position:absolute;
+      top:calc(100% + 24px);
+      right:20px;
+      z-index:2;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      background:var(--header-bg);
+      border:1px solid var(--line);
+      padding:4px 18px 10px;
+    }
+    nav.nav-open{display:flex;}
+    nav a{padding:10px 0;width:100%;}
+  }
+
+  /* The 42px title is wider than a small phone's content area, so the
+     title token steps down here (the Jesse name is short enough not to). */
+  @media (max-width:480px){
+    :root{--fs-artist-name:32px;}
+  }
+
+  /* ---------- LINKS INSIDE TEXT ---------- */
+  .text-link{color:var(--c-gold);transition:color .2s ease;}
+  .text-link:hover{color:var(--c-hover-text);text-decoration:underline;text-underline-offset:3px;}
+  .text-link:focus-visible,.style-jump a:focus-visible,.toiawase-link:focus-visible{outline:1px solid var(--c-gold);outline-offset:3px;}
+
+  .midashi-label a{color:inherit;transition:color .2s ease;}
+  .midashi-label a:hover{color:var(--c-hover-text);text-decoration:underline;text-underline-offset:3px;}
+  .midashi-label a:focus-visible,.style-others a:focus-visible,.style-card a:focus-visible{outline:1px solid var(--c-gold);outline-offset:3px;}
+
+  /* ---------- SINGLE STYLE PAGE ---------- */
+  .style-article{padding-top:var(--space-1);padding-bottom:var(--space-3);}
+  .style-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 340px;
+    column-gap:56px;
+    align-items:start;
+    border-top:1px solid var(--line);
+    padding-top:var(--space-3);
+  }
+  .style-body{min-width:0;}
+  .style-figs{position:sticky;top:96px;}
+  .style-body h2{
+    font-family:var(--font-display);
+    font-weight:var(--fw-display);
+    font-size:var(--fs-subtitle);
+    line-height:1.3;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:var(--c-heading);
+    margin-top:var(--space-3);
+  }
+  .style-body h2:first-child{margin-top:0;}
+  .style-body p{
+    margin-top:10px;
+    max-width:66ch;
+    font-size:var(--fs-body);
+    line-height:1.75;
+    color:var(--c-body);
+  }
+  .style-links{display:flex;flex-wrap:wrap;gap:6px var(--space-3);margin-top:var(--space-3);}
+  .style-links .toiawase-link{margin-top:0;}
+  .style-fig{margin:0;}
+  .style-fig img{width:100%;height:auto;border:1px solid var(--line);background:#14110d;}
+  .style-fig figcaption{
+    margin-top:10px;
+    font-family:var(--font-subs);
+    font-weight:var(--fw-sans-medium);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--c-small-info);
+  }
+  .style-others-wrap{padding-bottom:var(--space-2);}
+  .style-others{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;}
+  .style-others ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 30px;}
+  .style-others a{display:inline-block;padding:4px 0;}
+
+  /* ---------- STYLES OVERVIEW ---------- */
+  .style-cards{padding-bottom:var(--space-2);}
+  .style-card{
+    display:grid;
+    grid-template-columns:220px minmax(0,1fr);
+    column-gap:var(--space-4);
+    padding:28px 0;
+    border-top:1px solid var(--line);
+    align-items:start;
+  }
+  .style-card:last-child{border-bottom:1px solid var(--line);}
+  .style-card img{width:100%;height:auto;border:1px solid var(--line);background:#14110d;}
+  .style-card h2{
+    font-family:var(--font-display);
+    font-weight:var(--fw-display3);
+    font-size:24px;
+    line-height:1.15;
+    letter-spacing:var(--ls-artist-name);
+    text-transform:uppercase;
+    color:var(--c-heading);
+    margin-top:var(--space-1);
+  }
+  .style-card h2 a:hover{color:var(--artist-white);}
+  .style-card p{margin-top:var(--space-1);max-width:62ch;font-size:var(--fs-body);line-height:1.7;color:var(--c-body);}
+  .style-card .toiawase-link{margin-top:var(--space-1);}
+  .style-aftercare{padding-bottom:var(--space-1);}
+  .style-aftercare p{max-width:68ch;font-size:var(--fs-body);line-height:1.7;}
+
+  @media (max-width:920px){
+    .style-grid{grid-template-columns:minmax(0,1fr);padding-top:var(--space-2);}
+    .style-figs{position:static;order:-1;max-width:380px;margin-bottom:var(--space-2);}
+    .style-card{grid-template-columns:minmax(0,1fr);row-gap:var(--space-2);padding:24px 0;}
+    .style-card img{max-width:260px;}
+    .style-card h2{margin-top:0;font-size:22px;}
+  }
+  @media (max-width:360px){
+    :root{--fs-artist-name:28px;}
+  }
