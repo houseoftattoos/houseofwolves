@@ -1317,3 +1317,47 @@ width: 380px;
 }
 .studio-info h2.artist-primary.mt-24 { margin-top: 24px; }
 .studio-info h2.artist-primary.artist-primary-spacing { margin: 24px 0 12px; }
+
+
+/* ==========================================
+   Index gallery: 3 extra thumbnails on phones + profile link
+========================================== */
+
+/* Thumbnails 4-6 (.mobile-thumb) only show on phones; they are always part of the lightbox. */
+.artist-gallery img.mobile-thumb { display: none; }
+
+.gallery-profile-link {
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: #B08A4A;
+}
+.gallery-profile-link:hover,
+.gallery-profile-link:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Tablet / desktop: the link hangs just under the thumbnails without taking any
+   space, so the cards keep exactly the heights the banners are lined up to. */
+@media (min-width:668px){
+    .artist-gallery { position: relative; }
+    .gallery-profile-link {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 2px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+}
+
+/* Phones: 6 thumbnails in two rows of 3, link underneath. */
+@media (max-width:667px){
+    .artist-gallery { flex-wrap: wrap; }
+    .artist-gallery img.mobile-thumb { display: block; }
+    .gallery-profile-link { flex: 0 0 100%; }
+}
